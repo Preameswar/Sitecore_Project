@@ -1,0 +1,34 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data.Items;
+
+
+
+@{ 
+    var dataSourceId = RenderingContext.Current.Rendering.DataSource;
+    var dataSourceItem = Sitecore.Context.Database.GetItem(dataSourceId);
+} 
+
+@if (dataSourceItem != null)
+{
+<div class="col-sm-12 col-md-6 col-lg-6 col-md-col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col">
+    <div class="tm-site-header">
+        <h1 class="mb-4">@dataSourceItem["Title"]</h1>
+        @* <h1 class="mb-4">@Html.Sitecore().Field("Title", new { @class = "mb-4", DisableWebEdit = true })</h1>*@
+        @*<img src="img/underline.png" class="img-fluid mb-4">*@
+        @*<img class="img-fluid mb-4">@dataSourceItem["Image"]</img>*@
+
+        @*@Html.Sitecore().Field("Image", new { @class = "img-fluid mb-4", DisableWebEdit = true })*@
+
+        @{
+            var imageField = dataSourceItem.Fields["Image"];
+            var imageMediaItem = (Sitecore.Data.Fields.ImageField)imageField;
+            var imageUrl = Sitecore.Resources.Media.MediaManager.GetMediaUrl(imageMediaItem.MediaItem);
+        }
+        <img src="@imageUrl" class="img-fluid mb-4" />
+        
+        @dataSourceItem["Paragraph"]
+
+    </div>
+</div>
+}
