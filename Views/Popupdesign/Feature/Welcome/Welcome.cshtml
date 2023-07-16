@@ -1,0 +1,39 @@
+﻿<div @using Sitecore.Mvc
+     @using Sitecore.Mvc.Presentation
+
+     
+     
+     
+     class="grid__item" id="home-link">
+    <div class="product">
+        <div class="tm-nav-link">
+            <i class="fas fa-home fa-3x tm-nav-icon"></i>
+            <span class="tm-nav-text">@Html.Sitecore().Field("Title")</span>
+            <div class="product__bg"></div>
+        </div>
+        <div class="product__description">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h2 class="tm-page-title">@Html.Sitecore().Field("you")</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    @*<img src="img/welcome-1.jpg" class="img-fluid mb-3">*@
+                    @Html.Sitecore().Field("Image1", new { @class = "img-fluid mb-3", DisableWebEdit = true })
+                    @*<p>You are allowed to download, modify and use this template for your commercial or business websites. </p>
+                    <p>Please tell your friends about <a rel="nofollow" href="https://fb.com/tooplate" target="_parent">Tooplate</a>. That will be very helpful for us. Thank you.</p>*@
+                @Html.Sitecore().Field("Paragraph1") 
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    @Html.Sitecore().Field("Paragraph2")
+
+                    @*<img src="img/welcome-2.jpg" class="img-fluid">*@
+                    @Html.Sitecore().Field("Image2", new { @class = "mg-fluid", DisableWebEdit = true })
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
